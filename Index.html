@@ -1,11 +1,85 @@
 <!DOCTYPE html>
-<!-- Arquivo DesenhandoImagens.html -->
-<html>
+<!--Exemplo dado no 2º ano, mostrando a movimentação de uma imagens desenhada no canvas. -->
+<!--Nesta observação vocês devem colocar os nomes dos alunos que ajudaram na atividade.
+Um aluno por linha e coloque o nome completo, o respectivo número e a turma.
+Nome:                                       nº:         Turma:              
+Nome:                                       nº:         Turma:              
+Nome:                                       nº:         Turma:              
+Nome:                                       nº:         Turma:              
+Nome:                                       nº:         Turma:              
+Nome:                                       nº:         Turma:              
+Nome:                                       nº:         Turma:              -->
+
+<html lang="pt-BR">
 <head>
-    <title>the Thing</title>
-    <meta charset="utf-8"/>
-    <script src="gamesWeb.js"></script>
-    </head>
-<body onload = "DesenhandoImagem()">
+<title>Imagem</title>
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto|Sirin+Stencil" rel="stylesheet">
+<meta charset="UTF-8">
+<link rel="icon" href="Imagens/Icon1/favicon.ico" type="image/x-icon"?v=2 />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Incício do Script do Canvas -->
+<style>
+canvas {
+border:1px solid #d3d3d3;
+background-color: #f1f1f1;
+}
+</style>
+<script>
+var cor = 'blue';
+var cont = 1;
+var myGamePiece;
+function startGame() {
+myGamePiece = new component(30, 30, "red", 10, 120);
+myGameArea.start();
+}
+
+var myGameArea = {
+canvas : document.createElement("canvas"),
+start : function() {
+this.canvas.width = 480;
+this.canvas.height = 270;
+this.context = this.canvas.getContext("2d");
+document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+this.interval = setInterval(updateGameArea, 20);
+},
+clear : function() {
+this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+}
+}
+
+function component(width, height, color, x, y) {
+this.width = width;
+this.height = height;
+this.x = x;
+this.y = y;
+this.color;
+this.update = function(){
+ctx = myGameArea.context;
+if(cont % 10 == 0)
+cor = 'red';
+else
+cor = 'blue';
+//ctx.fillStyle = color;
+ctx.fillStyle = cor;
+ctx.fillRect(this.x, this.y, this.width, this.height);
+cont++;
+}
+}
+
+function updateGameArea() {
+myGameArea.clear();
+myGamePiece.x += 1;
+myGamePiece.update();
+}
+</script>
+
+<!-- Fim do Script do canvas-->
+
+
+
+</head>
+<body onload="startGame();">
+
 </body>
 </html>
