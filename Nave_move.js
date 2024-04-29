@@ -1,6 +1,8 @@
 var cor = 'blue';
 var cont = 1;
-var myGamePiece;
+var myGamePiece = {
+};
+
 function startGame() {
 myGamePiece = new component(30, 30, "red", 450, 0);
 myGameArea.start();
@@ -9,8 +11,8 @@ myGameArea.start();
 var myGameArea = {
   canvas : document.createElement("canvas"),
   start : function() {
-  this.canvas.width = 480;
-  this.canvas.height = 270;
+  this.canvas.width = 480;G
+  this.canvas.height = 370;
   this.context = this.canvas.getContext("2d");
   document.body.insertBefore(this.canvas, document.body.childNodes[0]);
   this.interval = setInterval(updateGameArea, 20);
@@ -43,18 +45,14 @@ cont++;
 
 function updateGameArea(timestamp) {
 myGameArea.clear();
-myGamePiece.y += 1; 
-myGamePiece.x -= 2; 
+myGamePiece.y += 2;
+myGamePiece.x -= 3; 
 myGamePiece.update();
-if (myGamePiece) {x + Width >= canvas.width || y + Height >= canvas.height }{
-    cancelAnimationFrame(animationId); 
-    return;
+
+if (myGamePiece.x <= 0) {
+  myGamePiece.x = 0;
 }
-
-animationId = requestAnimationFrame(updateGameArea);
-
-let animationId = requestAnimationFrame(updateGameArea);
-
-
-requestAnimationFrame(updateGameArea);
+if (myGamePiece.y > 340) {
+  myGamePiece.y = 340;
+}
 }
