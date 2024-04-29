@@ -1,17 +1,17 @@
 var cor = 'blue';
+var imagem = new Image();
+imagem.src = "../Assets/Img_Nave1/Nave_Base.png";
 var cont = 1;
-var myGamePiece = {
-};
-
+var myGamePiece = {}
 function startGame() {
-myGamePiece = new component(30, 30, "red", 450, 0);
+myGamePiece = new component(100, 100, "red", 390, 0);
 myGameArea.start();
 }
 
 var myGameArea = {
   canvas : document.createElement("canvas"),
   start : function() {
-  this.canvas.width = 480;G
+  this.canvas.width = 480;
   this.canvas.height = 370;
   this.context = this.canvas.getContext("2d");
   document.body.insertBefore(this.canvas, document.body.childNodes[0]);
@@ -37,7 +37,7 @@ cor = 'blue';
 
 //ctx.fillStyle = color;
 ctx.fillStyle = cor;
-ctx.fillRect(this.x, this.y, this.width, this.height);
+ctx.drawImage(imagem, this.x, this.y, this.width, this.height);
 cont++;
 
 }
@@ -52,7 +52,7 @@ myGamePiece.update();
 if (myGamePiece.x <= 0) {
   myGamePiece.x = 0;
 }
-if (myGamePiece.y > 340) {
-  myGamePiece.y = 340;
+if (myGamePiece.y > 260) {
+  myGamePiece.y = 260;
 }
 }
