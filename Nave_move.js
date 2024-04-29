@@ -1,6 +1,6 @@
 var cor = 'blue';
 var imagem = new Image();
-imagem.src = "../Assets/Img_Nave1/Nave_Base.png";
+imagem.src = "Nave_Base.png";
 var cont = 1;
 var myGamePiece = {}
 function startGame() {
