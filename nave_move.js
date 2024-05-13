@@ -3,15 +3,14 @@ imagem.src = "Nave_Base.png";
 var cont = 1;
 var myGamePiece = {}
 function startGame() {
-myGamePiece = new component(100, 100, "red", 390, 0);
+myGamePiece = new component(100, 100, "red", 0, 0);
 myGameArea.start();
 }
-
 var myGameArea = {
   canvas : document.createElement("canvas"),
   start : function() {
-  this.canvas.width = 480;
-  this.canvas.height = 370;
+  this.canvas.width = 800;
+  this.canvas.height = 600;
   this.context = this.canvas.getContext("2d");
   document.body.insertBefore(this.canvas, document.body.childNodes[0]);
   this.interval = setInterval(updateGameArea, 20);
@@ -41,17 +40,27 @@ cont++;
 
 }
 }
-
 function updateGameArea(timestamp) {
-myGameArea.clear();
-myGamePiece.y += 2;
-myGamePiece.x -= 3; 
-myGamePiece.update();
-
-if (myGamePiece.x <= 0) {
-  myGamePiece.x = 0;
-}
-if (myGamePiece.y > 260) {
-  myGamePiece.y = 260;
-}
+  myGameArea.clear();
+  myGamePiece.y += 2;
+  myGamePiece.x -= 3; 
+  myGamePiece.update();
+  
+  if (myGamePiece.x <= 0) {
+    myGamePiece.x = 0;
+  }
+  if (myGamePiece.y > 500) {
+    myGamePiece.y = 500;
+  }
+  }
+function movimentaNaveTeclado(tecla) {
+  if (tecla == 37) { //Seta para esquerda
+    myGamePiece.x-=50;
+    myGamePiece.x = Math.max(0,x);
+  } else if(tecla == 32){ //Seta para direira
+    myGamePiece.x+=50;
+    myGamePiece.x = Math.min(canvas.width - 160,x);
+  } else if (tecla == 32){ //espaço
+    disparaTiro(x+80, 700-160);
+  }
 }
