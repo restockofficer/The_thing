@@ -3,7 +3,7 @@ imagem.src = "Nave_Base.png";
 var cont = 1;
 var myGamePiece = {}
 function startGame() {
-myGamePiece = new component(100, 100, "red", 0, 0);
+myGamePiece = new component(100, 100, "red", 650, 700);
 myGameArea.start();
 }
 var myGameArea = {
@@ -40,27 +40,40 @@ cont++;
 
 }
 }
-function updateGameArea(timestamp) {
+function updateGameArea(key) {
   myGameArea.clear();
-  myGamePiece.y += 2;
-  myGamePiece.x -= 3; 
   myGamePiece.update();
+  document.addEventListener("keydown",
+  function(evento) {
+  movimentaNaveTeclado(evento.keyCode);
+  });
   
+
   if (myGamePiece.x <= 0) {
     myGamePiece.x = 0;
   }
   if (myGamePiece.y > 500) {
     myGamePiece.y = 500;
   }
+  if (myGamePiece.x > 700) {
+    myGamePiece.x = 700;
   }
-function movimentaNaveTeclado(tecla) {
-  if (tecla == 37) { //Seta para esquerda
-    myGamePiece.x-=50;
-    myGamePiece.x = Math.max(0,x);
-  } else if(tecla == 32){ //Seta para direira
-    myGamePiece.x+=50;
-    myGamePiece.x = Math.min(canvas.width - 160,x);
-  } else if (tecla == 32){ //espaço
-    disparaTiro(x+80, 700-160);
+  
+  function movimentaNaveTeclado(Key) {
+  if (Key == 65) { // Seta para esquerda
+    myGamePiece.x -= 0.07;
   }
-}
+   else if (Key == 68) { // Seta para direita
+    myGamePiece.x += 0.07;
+  } else if (Key == 32) { // espaço
+  disparaTiro(x+1, 0-0);
+  }
+  ctx.drawImage(Nave, x, 0-0);
+  }
+  function disparaTiro(col, lin) {
+  if (lin > -6) {
+  ctx.clearRect(col, lin, 2, 5);
+  ctx.fillRect(col, lin-6, 9, 5);
+  }
+  setTimeout(function(){ disparaTiro(col, lin-6) }, 1);
+  }}
