@@ -70,10 +70,4 @@ function updateGameArea(key) {
   }
   ctx.drawImage(Nave, x, 0-0);
   }
-  function disparaTiro(col, lin) {
-  if (lin > -6) {
-  ctx.clearRect(col, lin, 2, 5);
-  ctx.fillRect(col, lin-6, 9, 5);
-  }
-  setTimeout(function(){ disparaTiro(col, lin-6) }, 1);
-  }}
+}
